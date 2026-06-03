@@ -1,80 +1,22 @@
-# vuetify-project
+# vite-lib-build-issue-css-layer-order
 
-Scaffolded with Vuetify CLI.
+Demonstrates the CSS Layer ordering issue when building with Vite 8+
 
-## ❗️ Documentation
+## Instructions
 
-- Primary docs: https://vuetifyjs.com/
-- Getting started guide: https://vuetifyjs.com/en/getting-started/installation/
-- Community support: https://community.vuetifyjs.com/
-- Issue tracker: https://issues.vuetifyjs.com/
+- Install a new vuetify project using the [Installation](https://vuetifyjs.com/en/getting-started/installation/#installation) (and the package manager of your choice)
+ - use default choices when prompted with questions
+- Run `cd vuetify-project`
+- Delete `vite.config.mts`
+- Copy the [vite.config.ts](https://raw.githubusercontent.com/adube/vite-lib-build-issue-css-layer-order/refs/heads/main/vite.config.ts) file to the root of the project
+- Run `npm run build-only`
+- Copy the [mybuild.html](https://raw.githubusercontent.com/adube/vite-lib-build-issue-css-layer-order/refs/heads/main/mybuild.html) file to the `./dist/` directory
+- Run `npx vite preview --outDir dist`
+- Visit http://127.0.0.1:4173/mybuild.html
 
-## 🧱 Stack
+In another terminal:
 
-- Framework: Vue 3 + Vite
-- UI Library: Vuetify
-- Language: TypeScript
-- Package manager: npm
+- Run `npm run dev`
+- Visit http://localhost:3000/
 
-## 🧭 Start Here
-
-- Main entry: `src/main.ts`
-- Main app component: `src/App.vue`
-- Main styles: `src/styles/`
-- Plugin setup: `src/plugins/`
-
-## 📁 Project Structure
-
-- `src/main.ts` — application entry point
-- `src/App.vue` — root component
-- `src/components/` — reusable Vue components
-- `src/plugins/` — plugin registration and setup
-- `src/styles/` — global styles and theme settings
-- `public/` — static public files
-
-## ✨ Enabled Features
-
-- ESLint
-- Vuetify MCP
-
-## 💿 Install
-
-Use your selected package manager (npm) to install dependencies:
-
-```bash
-npm install
-```
-
-## 🚀 Quick Start
-
-```bash
-npm install
-npm run dev
-```
-
-## 🏗️ Build
-
-```bash
-npm run build
-```
-
-## 🧪 Available Scripts
-
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
-- `npm run build-only`
-- `npm run type-check`
-- `npm run lint`
-- `npm run lint:fix`
-- `npm run mcp`
-- `npm run mcp:revert`
-
-## 💪 Support Vuetify Development
-
-This project uses Vuetify - an MIT licensed Open Source project. We are glad to welcome contributors and any support for ongoing development:
-
-- Contribute to Vuetify and ecosystem projects: https://github.com/vuetifyjs
-- Request enterprise support: https://support.vuetifyjs.com/
-- Sponsor on GitHub: https://github.com/sponsors/vuetifyjs
-- Support on Open Collective: https://opencollective.com/vuetify
+The page that uses the "lib" build, i.e. `mybuild.html` does not show up with the exact same appearance as the one served by vite (port 3000). If you inspect any of the `<v-card>` element, in the developer tool of your browser you'll see that that the CSS Layer are not in the same order in both pages.
