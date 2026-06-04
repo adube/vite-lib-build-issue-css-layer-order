@@ -20,3 +20,9 @@ In another terminal:
 - Visit http://localhost:3000/
 
 The page that uses the "lib" build, i.e. `mybuild.html` does not show up with the exact same appearance as the one served by vite (port 3000). If you inspect any of the `<v-card>` element, in the developer tool of your browser you'll see that that the CSS Layer are not in the same order in both pages.
+
+## Fixed
+
+Vuetify seems to inject `<style id="vuetify-theme-stylesheet" type="text/css">` tag at the end of the `<head>` tag. In dev, Vite injects styles in the head tag so those have the priority. But in `mybuild.html` the `<link rel="stylesheet" href="mybuild.css" />` is in `<body>`. This makes `<style id="vuetify-theme-stylesheet" type="text/css">` to have priority over `mybuild.css`.
+
+So, the fix is: move `mybuild.css` to `<head>`.
